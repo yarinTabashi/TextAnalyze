@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he", dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניתוח טקסט</title>
+    <style>
+        /* Define the main container as a grid */
+        .container {
+            display: grid;
+            grid-template-rows: 50vh 1fr; /* row1 - up to 50% of the screen size, row2 - the remaining space */
+            grid-template-columns: 1fr 2fr; /* The second column will be X2 from the first column*/
+            gap: 10px; /* space between the grid cells*/
+            text-align: center;
+        }
+
+        /* Define a style for each cell */
+        .item {
+            padding: 20px;
+            background-color: #c9e4ca;
+            border: 1px solid #364958;
+            color: #364958;
+            overflow-y: scroll; /* Enable scrolling*/
+        }
+
+        .item.full-width {
+            background-color: #87bba2;
+            grid-column: span 2; /* This makes the item span across both columns in the second row */
+            display: flex; /* Flexbox to arrange the charts in a row */
+            justify-content: space-around; /* Distribute the space between charts */
+            align-items: center; /* Center align the charts vertically */
+        }
+
+        /* Define a style for each history record */
+        .button-group {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 10px; /* Space between buttons */
+        }
+
+        /* Define a style for the text-box and button */
+        .mybutton {
+            border-radius: 6px;
+            font-size: 18px;
+            padding: 8px;
+            margin-bottom: 4px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="item">
+        <h2>אנליזות אחרונות</h2>
+        <!-- A history container for buttons that will be added dynamically -->
+        <div id="history-container" class="button-group">
+        </div>
+    </div>
+    <div class="item">
+        <h1>ניתוח טקסט</h1>
+        <h4>להלן מערכת לניתוח קלט טקסט.</h4>
+        <h4>בכל שלב, באפשרותך להזין כאן קלט חדש, או לגשת ל-15 האנליזות האחרונות שבוצעו.</h4>
+        <h4>שים לב! המערכת תאפשר לעבד קלט בעברית בלבד, וכן את התווים: . , ?</h4>
+        <input type="text" id="strinput" name="lname" class="mybutton" maxlength="100" dir="rtl"><br><br>
+        <input type="submit" value="שלח" class="mybutton" id="sendBtn">
+    </div>
+
+    <!-- The second row, which will display the analysis results-->
+    <div class="item full-width">
+        <h1>תוצאות האנליזה</h1>
+        <canvas id="myChart1" style="width:40%;max-width:600px"></canvas> <!-- The chart will be dynamically added (how many times each letter is used)-->
+        <canvas id="myChart2" style="width:40%;max-width:600px"></canvas> <!-- The chart will be dynamically added (how many times each word is used)-->
+        <h3 id="analyzeResult3"></h3> <!-- The third analyze result - amount of words that includes in the word the same letter more than once-->
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+</body>
+</html>
