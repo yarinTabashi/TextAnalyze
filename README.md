@@ -52,23 +52,34 @@ Each analysis result contains this properties:
 - How many times each word is used (Map<String, Integer> and displayed as a pie chart)
 - Amount of words that includes in the word the same letter more than once (Integer value)
 ## Project Setup
+**Prerequisites:**
+- Git must be installed.
+- Docker Desktop must be installed.
 
-1. **Clone the repository**
+**Steps:**
+1. **Open Git Bash and clone the repository:**
 ```bash
 git clone https://github.com/yarintabashi/TextAnalyze.git
+```
+2. **Navigate to the project directory:**
+```bash
 cd TextAnalyze
 ```
-2. **Build the Spring Boot application**
+3. **Create the target directory and download the JAR files:**
 ```bash
-mvn clean install
+mkdir -p target && curl -L -o target/rafael-exercise-0.0.1-SNAPSHOT.jar https://github.com/yarinTabashi/TextAnalyze/releases/download/v1.0.0/rafael-exercise-0.0.1-SNAPSHOT.jar
 ```
 
-3. **Start the application with Docker-Compose**
+4. **Build and start the application using Docker-compose:**
 ```bash
 docker-compose up --build
 ```
+Note: The build may take a few minutes.
 
-4. **Access the Web Application**
+
+5. **Access the Web Application**
+   
+   Open your browser and go to:
 ```bash
   http://localhost:8080
 ```
